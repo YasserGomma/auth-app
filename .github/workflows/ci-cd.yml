@@ -1,3 +1,5 @@
+name: Backend CI
+
 on:
   push:
     branches: [main]
@@ -13,9 +15,9 @@ jobs:
         image: mongo:6.0
         env:
           MONGO_INITDB_ROOT_USERNAME: root
-          MONGO_INITDB_ROOT_PASSWORD: ${{ secrets.MONGO_ROOT_PASSWORD }}
+          MONGO_INITDB_ROOT_PASSWORD: testpassword123
         options: >-
-          --health-cmd "mongosh -u root -p ${{ secrets.MONGO_ROOT_PASSWORD }} --authenticationDatabase admin --quiet --eval 'db.runCommand({ ping: 1 })'"
+          --health-cmd "mongosh -u root -p testpassword123 --authenticationDatabase admin --quiet --eval 'db.runCommand({ ping: 1 })'"
           --health-interval 10s
           --health-timeout 10s
           --health-retries 10
@@ -51,5 +53,5 @@ jobs:
         run: npm run test:cov
         env:
           CI: true
-          MONGODB_URI: "mongodb://root:${{ secrets.MONGO_ROOT_PASSWORD }}@mongo:27017/auth-app?authSource=admin"
+          MONGODB_URI: "mongodb://root:testpassword123@mongo:27017/auth-app?authSource=admin"
           JWT_SECRET: "${{ secrets.JWT_SECRET }}"
