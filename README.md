@@ -120,11 +120,52 @@ Available at: [http://localhost:5000/api](http://localhost:5000/api)
 
 ### Example Request
 
+#### Signup
+
 ```json
+POST /auth/signup
+Content-Type: application/json
+
 {
   "email": "user@example.com",
-  "password": "SecurePass123!"
+  "name": "John Doe",
+  "password": "Password123!"
 }
+
+```
+
+#### Signin
+
+```json
+POST /auth/signin
+Content-Type: application/json
+
+{
+  "email": "user@example.com",
+  "password": "Password123!"
+}
+
+```
+
+### Example Response 
+
+#### Signup
+
+```json
+{
+  "message": "User created successfully",
+  "userId": "abc123"
+}
+
+```
+
+#### Signin
+
+```json
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR."
+}
+
 ```
 
 ---
