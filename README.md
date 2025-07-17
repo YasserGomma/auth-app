@@ -66,9 +66,6 @@ A **production-ready, full-stack authentication system** built with modern secur
 git clone https://github.com/your-repo/auth-app.git
 cd auth-app
 
-# Copy environment file and configure secrets
-cp backend/.env.example backend/.env
-
 # Build and run the services
 docker-compose up --build
 ```
@@ -89,7 +86,6 @@ docker-compose up --build
 ```bash
 cd backend
 npm install
-cp .env.example .env  # Update with dev environment variables
 npm run start:dev     # Run with hot-reload
 ```
 
