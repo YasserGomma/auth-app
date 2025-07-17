@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-# auth-app
-=======
-Here's an improved, polished version of your README with enhanced structure, clearer instructions, and a more professional tone, all while keeping the original content intact and user-friendly:
-
----
-
 # 🔒 AuthFlow - Secure Authentication System
 
 A **production-ready, full-stack authentication system** built with modern security practices and a complete TypeScript setup.
@@ -161,4 +154,3 @@ npm test
 cd frontend
 npm test
 ```
->>>>>>> 0b62071 (Initial commit)
