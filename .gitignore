@@ -5,10 +5,7 @@
 *.seed
 *.pid.lock
 .DS_Store
-.idea/
-.vscode/
-*.swp
-*.swo
+*.sw?
 
 # Environment files
 .env
@@ -26,11 +23,9 @@ out/
 coverage/
 *.tgz
 
-# Frontend specific
+# Frontend specific (Vite/React)
 frontend/dist/
 frontend/.cache/
-frontend/.svelte-kit/
-frontend/package-lock.json
 
 # Backend specific
 backend/dist/
@@ -40,16 +35,10 @@ backend/.nyc_output/
 docker-compose.override.yml
 docker-compose.*.yml
 
-# Testing
-*.test-results.json
-test-results/
-junit.xml
-
 # Editor/IDE specific
-.idea
-.vscode
+.idea/
+.vscode/
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
-*.sw?
