@@ -148,9 +148,8 @@ cd backend
 npm test
 ```
 
-### Frontend (if configured)
-
+###  Run tests with coverage
 ```bash
-cd frontend
-npm test
+cd backend
+ npm run test:cov
 ```
