@@ -1,0 +1,56 @@
+name: Backend CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test-backend:
+    runs-on: ubuntu-latest
+
+    services:
+      mongo:
+        image: mongo:6.0
+        env:
+          MONGO_INITDB_ROOT_USERNAME: root
+          MONGO_INITDB_ROOT_PASSWORD: ${{ secrets.MONGO_ROOT_PASSWORD }}
+        options: >-
+          --health-cmd "mongo --quiet --eval 'db.runCommand({ ping: 1 })'"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18.20.2"
+          cache: "npm"
+
+      - name: Validate secrets
+        run: |
+          if [ -z "${{ secrets.MONGO_ROOT_PASSWORD }}" ] || [ -z "${{ secrets.JWT_SECRET }}" ]; then
+            echo "❌ Required secrets are missing!"
+            exit 1
+          fi
+
+      - name: Install dependencies
+        working-directory: ./backend
+        run: npm ci
+
+      - name: Run linter
+        working-directory: ./backend
+        run: npm run lint
+
+      - name: Run tests with coverage
+        working-directory: ./backend
+        run: npm run test:cov
+        env:
+          CI: true
+          MONGODB_URI: "mongodb://root:${{ secrets.MONGO_ROOT_PASSWORD }}@mongo:27017/auth-app?authSource=admin"
+          JWT_SECRET: "${{ secrets.JWT_SECRET }}"

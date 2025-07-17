@@ -1,0 +1,55 @@
+# General development files
+*.log
+*.tsbuildinfo
+*.pid
+*.seed
+*.pid.lock
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Dependency directories
+node_modules/
+**/node_modules/
+
+# Build artifacts
+dist/
+build/
+out/
+coverage/
+*.tgz
+
+# Frontend specific
+frontend/dist/
+frontend/.cache/
+frontend/.svelte-kit/
+frontend/package-lock.json
+
+# Backend specific
+backend/dist/
+backend/.nyc_output/
+
+# Docker related
+docker-compose.override.yml
+docker-compose.*.yml
+
+# Testing
+*.test-results.json
+test-results/
+junit.xml
+
+# Editor/IDE specific
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
