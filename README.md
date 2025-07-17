@@ -2,19 +2,6 @@
 
 A **production-ready, full-stack authentication system** built with modern security practices and a complete TypeScript setup.
 
----
-
-## 📋 Table of Contents
-
-* [Features](#-features)
-* [Quick Start](#-quick-start)
-* [Development Setup](#-development-setup)
-* [Screenshots](#-screenshots)
-* [API Documentation](#-api-documentation)
-* [Architecture Diagram](#-architecture-diagram)
-* [Security Features](#️-security-features)
-* [Testing](#-testing)
-* [License](#license)
 
 ---
 
