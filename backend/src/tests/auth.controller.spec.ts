@@ -3,7 +3,6 @@ import { AuthController } from '../auth/auth.controller';
 import { AuthService } from '../auth/auth.service';
 import { SignUpDto, SignInDto } from '../auth/dto';
 import { HttpException, HttpStatus } from '@nestjs/common';
-import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
 describe('AuthController', () => {
   let controller: AuthController;

@@ -4,7 +4,6 @@ import { ConfigService } from '@nestjs/config';
 
 describe('JwtStrategy', () => {
   let strategy: JwtStrategy;
-  let configService: ConfigService;
 
   beforeEach(async () => {
     const module = await Test.createTestingModule({
@@ -20,7 +19,6 @@ describe('JwtStrategy', () => {
     }).compile();
 
     strategy = module.get<JwtStrategy>(JwtStrategy);
-    configService = module.get<ConfigService>(ConfigService);
   });
 
   it('should be defined', () => {

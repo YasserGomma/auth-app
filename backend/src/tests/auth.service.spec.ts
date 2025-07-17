@@ -3,19 +3,13 @@ import { AuthService } from '../auth/auth.service';
 import { getModelToken } from '@nestjs/mongoose';
 import { JwtService } from '@nestjs/jwt';
 import { UnauthorizedException, ConflictException } from '@nestjs/common';
-
-jest.mock('bcrypt', () => ({
-  hash: jest.fn().mockResolvedValue('hashed-password'),
-  compare: jest.fn().mockResolvedValue(true),
-}));
+import * as bcrypt from 'bcrypt';
 
 describe('AuthService', () => {
   let service: AuthService;
   let mockUserModel: any;
   let mockJwtService: any;
-  let bcrypt: any;
 
-  // Helper to create a mock mongoose query chain
   const createMockQuery = (result: any) => ({
     maxTimeMS: jest.fn().mockReturnThis(),
     exec: jest.fn().mockResolvedValue(result),
@@ -46,7 +40,6 @@ describe('AuthService', () => {
     }).compile();
 
     service = module.get<AuthService>(AuthService);
-    bcrypt = require('bcrypt');
   });
 
   afterEach(() => {
@@ -129,7 +122,7 @@ describe('AuthService', () => {
         password: 'hashed-password',
       };
       mockUserModel.findOne.mockReturnValue(createMockQuery(mockUser));
-      bcrypt.compare.mockResolvedValue(false);
+      jest.spyOn(bcrypt, 'compare').mockResolvedValue(false);
 
       await expect(
         service.signin({
