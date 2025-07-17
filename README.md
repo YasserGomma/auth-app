@@ -9,6 +9,7 @@ A **production-ready, full-stack authentication system** built with modern secur
 * [Features](#-features)
 * [Quick Start](#-quick-start)
 * [Development Setup](#-development-setup)
+* [Screenshots](#-screenshots)
 * [API Documentation](#-api-documentation)
 * [Architecture Diagram](#-architecture-diagram)
 * [Security Features](#️-security-features)
@@ -91,6 +92,19 @@ npm run dev           # Vite dev server
 ```
 
 ---
+
+📸 Screenshots
+
+<img width="1919" height="942" alt="image" src="https://github.com/user-attachments/assets/2ca75d27-76a4-4da2-b919-4c85ee744694" />
+
+<img width="1919" height="943" alt="image" src="https://github.com/user-attachments/assets/07a68df1-acbc-496e-84d8-628c4efb322e" />
+
+<img width="1919" height="945" alt="image" src="https://github.com/user-attachments/assets/2ede6cca-f12a-4e2f-8b19-6c0d50e7358b" />
+
+
+
+---
+
 
 ## 📚 API Documentation
 
