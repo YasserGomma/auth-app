@@ -5,6 +5,8 @@ import { JwtService } from '@nestjs/jwt';
 import { UnauthorizedException, ConflictException } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 
+jest.mock('bcrypt'); // ✅ Enables __mocks__/bcrypt.ts
+
 describe('AuthService', () => {
   let service: AuthService;
   let mockUserModel: any;
@@ -87,7 +89,7 @@ describe('AuthService', () => {
         _id: '123',
         email: 'test@example.com',
         name: 'Test User',
-        password: 'hashed-password',
+        password: 'mocked-hashed-password',
       };
       mockUserModel.findOne.mockReturnValue(createMockQuery(mockUser));
 
@@ -119,10 +121,11 @@ describe('AuthService', () => {
       const mockUser = {
         _id: '123',
         email: 'test@example.com',
-        password: 'hashed-password',
+        password: 'mocked-hashed-password',
       };
       mockUserModel.findOne.mockReturnValue(createMockQuery(mockUser));
-      jest.spyOn(bcrypt, 'compare').mockResolvedValue(false);
+
+      (bcrypt.compare as jest.Mock).mockResolvedValueOnce(false);
 
       await expect(
         service.signin({
